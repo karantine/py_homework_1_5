@@ -122,7 +122,7 @@ print("Статус кормления утки: {}".format(goat_kopyta.feed_sta
 print("Яиц собрано: {} шт.\n".format(duck_kryakva.take_eggs(1)))
 
 chicken_koko = Chicken('Коко', 1.2)
-chicken_kukareku = Chicken('Кукареку', 1.6)
+chicken_kukareku = Chicken('Кукареку', 1.65)
 chicken_kukareku.voice = 'кукареку'
 
 print("Имя петуха: {}".format(chicken_kukareku.name))
@@ -166,3 +166,17 @@ print("Вес барана: {} кг.".format(sheep_kudryavy.weight))
 print('Баран говорит: {}'.format(sheep_kudryavy.voice))
 print("Статус кормления барана: {}".format(sheep_kudryavy.feed_status))
 print("Шерсти собрано: {} кг.\n".format(sheep_kudryavy.take_wool(0.95)))
+
+animals_list = [cow_manka, goat_roga, goat_kopyta, sheep_barashek, sheep_kudryavy, duck_kryakva, chicken_koko, chicken_kukareku, goose_bely, goose_sery]
+
+weight_sum = 0
+weight_max = 0
+
+for animal in animals_list:
+  weight_sum += animal.weight
+  if animal.weight > weight_max:
+    weight_max = animal.weight
+    heaviest_animal = animal.name 
+
+print('Суммарный вес животных: {} кг.'.format(weight_sum))
+print('Животное с наибольшим весом: {} - {} кг'.format(heaviest_animal, weight_max))
