@@ -1,6 +1,13 @@
 class Animal:
-
+    name = ''
+    weight = 0 #kg
+    voice = ''
     feed_status = 'не кормили'
+
+    def __init__(self, name, weight, voice):
+        self.name = name
+        self.weight = weight
+        self.voice = voice
 
     def feed(self):
         self.feed_status = 'кормили'
@@ -10,86 +17,42 @@ class Milky(Animal):
 
     milk = 0
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, name, weight, voice):
+        self.name = name
+        self.weight = weight
+        self.voice = voice
 
     def take_milk(self, value):
         self.milk += value # l
         return self.milk
 
-class Cow(Milky):
-
-    name = ''
-    weight = 0 #kg
-    voice = 'му'
-
-    def __init__(self, name, weight):
-        self.name = name
-        self.weight = weight
-
-class Goat(Milky):
-
-    name = ''
-    weight = 0  # kg
-    voice = 'ме'
-
-    def __init__(self, name, weight):
-        self.name = name
-        self.weight = weight
-
 class EggLaying(Animal):
+
     eggs = 0
+
+    def __init__(self, name, weight, voice):
+        self.name = name
+        self.weight = weight
+        self.voice = voice
 
     def take_eggs(self, value):
         self.eggs += value
         return self.eggs
 
-class Duck(EggLaying):
-
-    name = ''
-    weight = 0  # kg
-    voice = 'га'
-
-    def __init__(self, name, weight):
-        self.name = name
-        self.weight = weight
-
-class Chicken(EggLaying):
-
-    name = ''
-    weight = 0  # kg
-    voice = 'ко-ко'
-
-    def __init__(self, name, weight):
-        self.name = name
-        self.weight = weight
-
-class Goose(EggLaying):
-
-    name = ''
-    weight = 0  # kg
-    voice = 'гу'
-
-    def __init__(self, name, weight):
-        self.name = name
-        self.weight = weight
-
 class Sheep(Animal):
 
-    name = ''
-    weight = 0
-    voice = 'бе'
     wool = 0
 
-    def __init__(self, name, weight):
+    def __init__(self, name, weight, voice):
         self.name = name
         self.weight = weight
+        self.voice = voice
 
     def take_wool(self, value):
         self.wool += value  # kg
         return self.wool
 
-cow_manka = Cow('Манька', 530)
+cow_manka = Milky('Манька', 530, 'му')
 
 print("Имя коровы: {}".format(cow_manka.name))
 print("Вес коровы: {} кг.".format(cow_manka.weight))
@@ -97,8 +60,8 @@ print('Корова говорит: {}'.format(cow_manka.voice))
 print("Статус кормления коровы: {}".format(cow_manka.feed()))
 print("Молока собрано: {} л.\n".format(cow_manka.take_milk(5)))
 
-goat_roga = Goat('Рога', 35)
-goat_kopyta = Goat('Копыта', 40)
+goat_roga = Milky('Рога', 35, 'мее')
+goat_kopyta = Milky('Копыта', 40, 'мее')
 
 print("Имя козы: {}".format(goat_roga.name))
 print("Вес козы: {} кг.".format(goat_roga.weight))
@@ -112,7 +75,7 @@ print('Коза говорит: {}'.format(goat_kopyta.voice))
 print("Статус кормления козы: {}".format(goat_kopyta.feed_status))
 print("Молока собрано: {} л.\n".format(goat_kopyta.take_milk(2)))
 
-duck_kryakva = Duck('Кряква', 2.1)
+duck_kryakva = EggLaying('Кряква', 2.1, 'га-га')
 
 print("Имя утки: {}".format(duck_kryakva.name))
 print("Вес утки: {} кг.".format(duck_kryakva.weight))
@@ -120,9 +83,8 @@ print('Утка говорит: {}'.format(duck_kryakva.voice))
 print("Статус кормления утки: {}".format(goat_kopyta.feed_status))
 print("Яиц собрано: {} шт.\n".format(duck_kryakva.take_eggs(1)))
 
-chicken_koko = Chicken('Коко', 1.2)
-chicken_kukareku = Chicken('Кукареку', 1.65)
-chicken_kukareku.voice = 'кукареку'
+chicken_koko = EggLaying('Коко', 1.2, 'ко-ко')
+chicken_kukareku = EggLaying('Кукареку', 1.65, 'кукареку')
 
 print("Имя петуха: {}".format(chicken_kukareku.name))
 print("Вес петуха: {} кг.".format(chicken_kukareku.weight))
@@ -136,8 +98,8 @@ print('Курица говорит: {}'.format(chicken_koko.voice))
 print("Статус кормления курицы: {}".format(chicken_koko.feed()))
 print("Яиц собрано: {} шт.\n".format(chicken_koko.take_eggs(2)))
 
-goose_sery = Goose('Серый', 5.3)
-goose_bely = Goose('Белый', 5.7)
+goose_sery = EggLaying('Серый', 5.3, 'гу-гу')
+goose_bely = EggLaying('Белый', 5.7, 'гу-гу')
 
 print("Имя гуся: {}".format(goose_sery.name))
 print("Вес гуся: {} кг.".format(goose_sery.weight))
@@ -151,8 +113,8 @@ print('Гусь говорит: {}'.format(goose_bely.voice))
 print("Статус кормления гуся: {}".format(goose_bely.feed()))
 print("Яиц собрано: {} шт.\n".format(goose_bely.take_eggs(0)))
 
-sheep_barashek = Sheep('Барашек', 138)
-sheep_kudryavy = Sheep('Кудрявый', 122)
+sheep_barashek = Sheep('Барашек', 138, 'бее')
+sheep_kudryavy = Sheep('Кудрявый', 122, 'бее')
 
 print("Имя барана: {}".format(sheep_barashek.name))
 print("Вес барана: {} кг.".format(sheep_barashek.weight))
@@ -177,5 +139,5 @@ for animal in animals_list:
     weight_max = animal.weight
     heaviest_animal = animal.name 
 
-print('Суммарный вес животных: {} кг.'.format(weight_sum))
-print('Животное с наибольшим весом: {} - {} кг'.format(heaviest_animal, weight_max))
+print('Суммарный вес животных {} кг.'.format(weight_sum))
+print('Животное с наибольшим весом: {}, {} кг'.format(heaviest_animal, weight_max))
