@@ -39,7 +39,7 @@ class EggLaying(Animal):
         self.eggs += value
         return self.eggs
 
-class Sheep(Animal):
+class Wooly(Animal):
 
     wool = 0
 
@@ -113,8 +113,8 @@ print('Гусь говорит: {}'.format(goose_bely.voice))
 print("Статус кормления гуся: {}".format(goose_bely.feed()))
 print("Яиц собрано: {} шт.\n".format(goose_bely.take_eggs(0)))
 
-sheep_barashek = Sheep('Барашек', 138, 'бее')
-sheep_kudryavy = Sheep('Кудрявый', 122, 'бее')
+sheep_barashek = Wooly('Барашек', 138, 'бее')
+sheep_kudryavy = Wooly('Кудрявый', 122, 'бее')
 
 print("Имя барана: {}".format(sheep_barashek.name))
 print("Вес барана: {} кг.".format(sheep_barashek.weight))
