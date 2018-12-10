@@ -1,132 +1,93 @@
 class Animal:
+
     name = ''
     weight = 0 #kg
     voice = ''
     feed_status = 'не кормили'
+    raw = 0
 
     def __init__(self, name, weight, voice):
         self.name = name
         self.weight = weight
         self.voice = voice
+        print("Имя животного: {}\nВес животного: {}\nГолос животного: {}".format(self.name, self.weight, self.voice))
 
     def feed(self):
-        self.feed_status = 'кормили'
+        self.feed_status = 'да'
+        print("Животное по имени {} кормили: {}".format(self.name, self.feed_status))
         return self.feed_status
+
+    def collect_something(self, value):
+        self.raw += value
+        print('Животное {} дало сырья: {} ед.\n'.format(self.name, self.raw))
+        return self.raw
 
 class Milky(Animal):
 
-    milk = 0
-
     def __init__(self, name, weight, voice):
-        self.name = name
-        self.weight = weight
-        self.voice = voice
+        super().__init__(name, weight, voice)
 
-    def take_milk(self, value):
-        self.milk += value # l
-        return self.milk
+    def collect_something(self, value):
+        self.raw += value
+        print('Животное {} дало молока: {} л.\n'.format(self.name, self.raw))
+        return self.raw
 
 class EggLaying(Animal):
 
-    eggs = 0
-
     def __init__(self, name, weight, voice):
-        self.name = name
-        self.weight = weight
-        self.voice = voice
+        super().__init__(name, weight, voice)
 
-    def take_eggs(self, value):
-        self.eggs += value
-        return self.eggs
+    def collect_something(self, value):
+        self.raw += value
+        print('Птица {} дала яиц: {} шт.\n'.format(self.name, self.raw))
+        return self.raw
 
 class Wooly(Animal):
 
-    wool = 0
-
     def __init__(self, name, weight, voice):
-        self.name = name
-        self.weight = weight
-        self.voice = voice
+        super().__init__(name, weight, voice)
 
-    def take_wool(self, value):
-        self.wool += value  # kg
-        return self.wool
+    def collect_something(self, value):
+        self.raw += value
+        print('Животное {} дало шерстви: {} кг.\n'.format(self.name, self.raw))
+        return self.raw
+
 
 cow_manka = Milky('Манька', 530, 'му')
-
-print("Имя коровы: {}".format(cow_manka.name))
-print("Вес коровы: {} кг.".format(cow_manka.weight))
-print('Корова говорит: {}'.format(cow_manka.voice))
-print("Статус кормления коровы: {}".format(cow_manka.feed()))
-print("Молока собрано: {} л.\n".format(cow_manka.take_milk(5)))
+cow_manka.feed()
+cow_manka.collect_something(5)
 
 goat_roga = Milky('Рога', 35, 'мее')
+goat_roga.feed()
+goat_roga.collect_something(2)
 goat_kopyta = Milky('Копыта', 40, 'мее')
-
-print("Имя козы: {}".format(goat_roga.name))
-print("Вес козы: {} кг.".format(goat_roga.weight))
-print('Коза говорит: {}'.format(goat_roga.voice))
-print("Статус кормления козы: {}".format(goat_roga.feed()))
-print("Молока собрано: {} л.\n".format(goat_roga.take_milk(3)))
-
-print("Имя козы: {}".format(goat_kopyta.name))
-print("Вес козы: {} кг.".format(goat_kopyta.weight))
-print('Коза говорит: {}'.format(goat_kopyta.voice))
-print("Статус кормления козы: {}".format(goat_kopyta.feed_status))
-print("Молока собрано: {} л.\n".format(goat_kopyta.take_milk(2)))
+goat_kopyta.feed()
+goat_kopyta.collect_something(2.5)
 
 duck_kryakva = EggLaying('Кряква', 2.1, 'га-га')
-
-print("Имя утки: {}".format(duck_kryakva.name))
-print("Вес утки: {} кг.".format(duck_kryakva.weight))
-print('Утка говорит: {}'.format(duck_kryakva.voice))
-print("Статус кормления утки: {}".format(goat_kopyta.feed_status))
-print("Яиц собрано: {} шт.\n".format(duck_kryakva.take_eggs(1)))
+duck_kryakva.feed()
+duck_kryakva.collect_something(2)
 
 chicken_koko = EggLaying('Коко', 1.2, 'ко-ко')
+chicken_koko.feed()
+chicken_koko.collect_something(2)
 chicken_kukareku = EggLaying('Кукареку', 1.65, 'кукареку')
-
-print("Имя петуха: {}".format(chicken_kukareku.name))
-print("Вес петуха: {} кг.".format(chicken_kukareku.weight))
-print('Петух говорит: {}'.format(chicken_kukareku.voice))
-print("Статус кормления петуха: {}".format(chicken_kukareku.feed()))
-print("Яиц собрано: {} шт.\n".format(chicken_kukareku.take_eggs(0)))
-
-print("Имя курицы: {}".format(chicken_koko.name))
-print("Вес курицы: {} кг.".format(chicken_koko.weight))
-print('Курица говорит: {}'.format(chicken_koko.voice))
-print("Статус кормления курицы: {}".format(chicken_koko.feed()))
-print("Яиц собрано: {} шт.\n".format(chicken_koko.take_eggs(2)))
+chicken_kukareku.feed()
+chicken_kukareku.collect_something(0)
 
 goose_sery = EggLaying('Серый', 5.3, 'гу-гу')
+goose_sery.feed()
+goose_sery.collect_something(0)
 goose_bely = EggLaying('Белый', 5.7, 'гу-гу')
-
-print("Имя гуся: {}".format(goose_sery.name))
-print("Вес гуся: {} кг.".format(goose_sery.weight))
-print('Гусь говорит: {}'.format(goose_sery.voice))
-print("Статус кормления гуся: {}".format(goose_sery.feed()))
-print("Яиц собрано: {} шт.\n".format(goose_sery.take_eggs(0)))
-
-print("Имя гуся: {}".format(goose_bely.name))
-print("Вес гуся: {} кг.".format(goose_bely.weight))
-print('Гусь говорит: {}'.format(goose_bely.voice))
-print("Статус кормления гуся: {}".format(goose_bely.feed()))
-print("Яиц собрано: {} шт.\n".format(goose_bely.take_eggs(0)))
+goose_bely.feed()
+goose_bely.collect_something(0)
 
 sheep_barashek = Wooly('Барашек', 138, 'бее')
+sheep_barashek.feed()
+sheep_barashek.collect_something(0.7)
 sheep_kudryavy = Wooly('Кудрявый', 122, 'бее')
-
-print("Имя барана: {}".format(sheep_barashek.name))
-print("Вес барана: {} кг.".format(sheep_barashek.weight))
-print('Баран говорит: {}'.format(sheep_barashek.voice))
-print("Статус кормления барана: {}".format(sheep_barashek.feed()))
-print("Шерсти собрано: {} кг.\n".format(sheep_barashek.take_wool(1.28)))
-
-print("Имя барана: {}".format(sheep_kudryavy.name))
-print("Вес барана: {} кг.".format(sheep_kudryavy.weight))
-print('Баран говорит: {}'.format(sheep_kudryavy.voice))
-print("Статус кормления барана: {}".format(sheep_kudryavy.feed_status))
-print("Шерсти собрано: {} кг.\n".format(sheep_kudryavy.take_wool(0.95)))
+sheep_kudryavy.feed()
+sheep_kudryavy.collect_something(0.6)
 
 animals_list = [cow_manka, goat_roga, goat_kopyta, sheep_barashek, sheep_kudryavy, duck_kryakva, chicken_koko, chicken_kukareku, goose_bely, goose_sery]
 
